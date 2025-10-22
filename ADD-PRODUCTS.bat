@@ -12,4 +12,3 @@ REM Run PowerShell script
 powershell -ExecutionPolicy Bypass -File "add-products.ps1"
 
 pause
-

@@ -1,6 +1,6 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { router } from 'expo-router';
-import { collection, getDocs, onSnapshot, query, orderBy, where } from 'firebase/firestore';
+import { collection, onSnapshot, query, orderBy } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
 import {
     ActivityIndicator,
@@ -15,7 +15,7 @@ import {
 import { useAuth } from '../../contexts/AuthContext.jsx';
 import { db } from '../../firebaseConfig.js';
 import { COLORS } from '../../constants/colors.js';
-import { handleFirestoreError, retryFirebaseOperation } from '../../utils/firebaseErrorHandler.js';
+import { handleFirestoreError } from '../../utils/firebaseErrorHandler.js';
 
 export default function AdminUsers() {
   const [users, setUsers] = useState([]);

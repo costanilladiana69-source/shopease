@@ -3,15 +3,15 @@
 ## 1. Firebase Project Configuration
 
 ### Current Firebase Project Details:
-- **Project ID**: gelcastore
-- **Auth Domain**: gelcastore.firebaseapp.com
-- **Storage Bucket**: gelcastore.appspot.com
+ apiKey: "AIzaSyD5a3wyNDYee6o1a6vLxMcFYt-Gdw5Kp8Q",
+  authDomain: "shopease-cea52.firebaseapp.com",
+  projectId: "shopease-cea52",
 
 ## 2. Firebase Console Setup
 
 ### Step 1: Authentication Setup
 1. Go to [Firebase Console](https://console.firebase.google.com/)
-2. Select your project: `gelcastore`
+2. Select your project: `shopease`
 3. Navigate to **Authentication** > **Sign-in method**
 4. Enable **Email/Password** authentication
 5. Optionally enable **Anonymous** authentication for guest users
@@ -239,4 +239,7 @@ service firebase.storage {
 - Enable debug mode in Firebase console to see rule evaluation details
 - Use Firebase emulator for local testing
 - Check browser console for detailed error messages
+
+
+
 

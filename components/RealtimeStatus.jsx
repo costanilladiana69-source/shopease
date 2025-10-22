@@ -6,7 +6,7 @@ export default function RealtimeStatus() {
   const [isConnected, setIsConnected] = useState(true);
   const [pulseAnim] = useState(new Animated.Value(1));
 
-  useEffect(() => {
+useEffect(() => {
     // Simulate connection status (in a real app, you'd check actual connection)
     const interval = setInterval(() => {
       setIsConnected(true); // Assume always connected for now
@@ -33,7 +33,7 @@ export default function RealtimeStatus() {
       clearInterval(interval);
       pulseAnimation.stop();
     };
-  }, []);
+}, [pulseAnim]);
 
   return (
     <View style={styles.container}>
@@ -76,4 +76,5 @@ const styles = StyleSheet.create({
     fontWeight: '500',
   },
 });
+
 

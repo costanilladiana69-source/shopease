@@ -15,7 +15,7 @@ import {
 import { useCart } from '../contexts/CartContext.jsx';
 import { COLORS } from '../constants/colors.js';
 
-const { width, height } = Dimensions.get('window');
+  const { width } = Dimensions.get('window');
 
 export default function ProductModal({ visible, onClose, product }) {
   const [selectedSize, setSelectedSize] = useState('');
@@ -41,7 +41,7 @@ export default function ProductModal({ visible, onClose, product }) {
       setSelectedSize('');
       setSelectedColor('');
       setQuantity(1);
-    } catch (error) {
+    } catch (_error) {
       Alert.alert('Error', 'Failed to add item to cart');
     } finally {
       setLoading(false);
@@ -116,14 +116,14 @@ export default function ProductModal({ visible, onClose, product }) {
             <View style={styles.priceContainer}>
               <Text style={styles.price}>₱{product.price.toFixed(2)}</Text>
               {product.originalPrice && product.originalPrice > product.price && (
-                <>
+                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                   <Text style={styles.originalPrice}>₱{product.originalPrice.toFixed(2)}</Text>
                   <View style={styles.discountBadge}>
                     <Text style={styles.discountText}>
                       {Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)}% OFF
                     </Text>
                   </View>
-                </>
+                </View>
               )}
             </View>
           </View>

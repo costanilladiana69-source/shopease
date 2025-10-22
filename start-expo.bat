@@ -36,3 +36,10 @@ npx expo start --clear
 
 pause
 
+
+
+
+
+
+
+

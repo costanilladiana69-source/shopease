@@ -1,15 +1,15 @@
-@echo off
-title Fix Expo Go Connection Issues
-color 0A
+// App.js
+import React from 'react';
+import { SafeAreaView, Text, View, StatusBar } from 'react-native';
 
-echo.
-echo ========================================
-echo    Fixing Expo Go Connection Issues
-echo ========================================
-echo.
-
-REM Run PowerShell script
-powershell -ExecutionPolicy Bypass -File "fix-expo-go.ps1"
-
-pause
+export default function App() {
+  return (
+    <SafeAreaView style={{ flex: 1 }}>
+      <StatusBar barStyle="dark-content" />
+      <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
+        <Text style={{ fontSize: 20 }}>Expo Go Basic Test — App is running ✅</Text>
+      </View>
+    </SafeAreaView>
+  );
+}
 

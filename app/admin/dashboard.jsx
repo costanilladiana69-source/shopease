@@ -1,6 +1,6 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { router } from 'expo-router';
-import { collection, getDocs, onSnapshot } from 'firebase/firestore';
+import { collection, onSnapshot } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
 import {
     ActivityIndicator,
@@ -14,7 +14,7 @@ import {
 import { useAuth } from '../../contexts/AuthContext.jsx';
 import { db } from '../../firebaseConfig.js';
 import { COLORS } from '../../constants/colors.js';
-import { handleFirestoreError, retryFirebaseOperation } from '../../utils/firebaseErrorHandler.js';
+// removed unused handleFirestoreError import
 
 export default function AdminDashboard() {
   const [stats, setStats] = useState({

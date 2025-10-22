@@ -1,12 +1,11 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { router } from 'expo-router';
-import React from 'react';
 import {
-    Image,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View
 } from 'react-native';
 
 export default function LandingScreen() {
@@ -30,10 +29,9 @@ export default function LandingScreen() {
             style={styles.logo}
           />
           <Text style={styles.title}>ShopEase</Text>
-          <Text style={styles.subtitle}>Simple e-commerce platform for all your shopping needs</Text>
+          <Text style={styles.subtitle}>Your trusted partner for easy online shopping</Text>
         </View>
 
-        {/* Features */}
         <View style={styles.features}>
           <View style={styles.featureItem}>
             <Ionicons name="storefront" size={32} color="#FFFFFF" />

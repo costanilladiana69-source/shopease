@@ -1,20 +1,20 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { router } from 'expo-router';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
-    Alert,
-    Image,
-    KeyboardAvoidingView,
-    Platform,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View
+  Alert,
+  Image,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View
 } from 'react-native';
-import { useAuth } from '../contexts/AuthContext.jsx';
 import { COLORS } from '../constants/colors.js';
+import { useAuth } from '../contexts/AuthContext.jsx';
 
 export default function LoginScreen() {
   const [email, setEmail] = useState('');
@@ -137,19 +137,6 @@ export default function LoginScreen() {
               </TouchableOpacity>
             </View>
           )}
-
-          <View style={styles.testAccountsContainer}>
-            <Text style={styles.testAccountsTitle}>Test Accounts:</Text>
-            <TouchableOpacity 
-              style={styles.testAccountButton}
-              onPress={() => {
-                setEmail('user@example.com');
-                setPassword('user123');
-              }}
-            >
-              <Text style={styles.testAccountText}>Regular User: user@example.com / user123</Text>
-            </TouchableOpacity>
-          </View>
 
           <View style={styles.signupContainer}>
             <Text style={styles.signupText}>Dont have an account? </Text>

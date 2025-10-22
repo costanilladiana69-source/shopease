@@ -2,7 +2,6 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { router } from 'expo-router';
 import { addDoc, collection, deleteDoc, doc, onSnapshot, orderBy, query, serverTimestamp, updateDoc } from 'firebase/firestore';
 import * as ImagePicker from 'expo-image-picker';
-import { Platform } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import {
     ActivityIndicator,
@@ -15,8 +14,9 @@ import {
     TextInput,
     TouchableOpacity,
     View,
+    Platform,
 } from 'react-native';
-import { useAuth } from '../../contexts/AuthContext.jsx';
+// removed unused useAuth import
 import { db } from '../../firebaseConfig.js';
 import { COLORS } from '../../constants/colors.js';
 import { handleFirestoreError, retryFirebaseOperation } from '../../utils/firebaseErrorHandler.js';

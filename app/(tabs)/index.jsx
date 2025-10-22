@@ -1,9 +1,8 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { router } from 'expo-router';
-import { collection, getDocs, limit, onSnapshot, orderBy, query } from 'firebase/firestore';
+import { collection, limit, onSnapshot, orderBy, query } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
 import {
-    Alert,
     Image,
     RefreshControl,
     ScrollView,
@@ -20,7 +19,7 @@ import { useAuth } from '../../contexts/AuthContext.jsx';
 import { useCart } from '../../contexts/CartContext.jsx';
 import { db } from '../../firebaseConfig.js';
 import { COLORS } from '../../constants/colors.js';
-import { handleFirestoreError, retryFirebaseOperation } from '../../utils/firebaseErrorHandler.js';
+import { handleFirestoreError } from '../../utils/firebaseErrorHandler.js';
 
 export default function HomeScreen() {
   const [products, setProducts] = useState([]);
@@ -131,10 +130,7 @@ export default function HomeScreen() {
   });
 
   // Get products for each category
-  const getProductsByCategory = (category) => {
-    if (category === 'all') return products;
-    return products.filter(product => product.category === category);
-  };
+  // Helper present but unused previously removed to satisfy linter
 
   const renderProductCard = (product) => (
     <TouchableOpacity

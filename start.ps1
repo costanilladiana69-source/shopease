@@ -72,3 +72,6 @@ Write-Host ""
 npx expo start --port 8082 --clear
 
 
+
+
+

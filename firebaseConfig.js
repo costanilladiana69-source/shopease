@@ -1,29 +1,25 @@
-// Import the functions you need
+// src/firebase.js
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
-// Your Firebase configuration
+// ✅ Correct Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCwTawYwGD19WsOzjG2zt8E-KlmhIV6O7s",
-  authDomain: "gelcastore.firebaseapp.com",
-  projectId: "gelcastore",
-  storageBucket: "gelcastore.appspot.com",
-  messagingSenderId: "556257405254",
-  appId: "1:556257405254:web:c19f2dacba14241a251d47",
+  apiKey: "AIzaSyD5a3wyNDYee6o1a6vLxMcFYt-Gdw5Kp8Q",
+  authDomain: "shopease-cea52.firebaseapp.com",
+  projectId: "shopease-cea52",
+  storageBucket: "shopease-cea52.firebasestorage.app",
+  messagingSenderId: "122932901549",
+  appId: "1:122932901549:web:18b35f9a73be677584f824"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// Initialize Auth
-const auth = getAuth(app);
+// Initialize Firebase services
+export const auth = getAuth(app);
+export const db = getFirestore(app);
+export const storage = getStorage(app);
 
-// Firestore & Storage
-const db = getFirestore(app);
-const storage = getStorage(app);
-
-export { app, auth, db, storage };
-
-
+export default app;

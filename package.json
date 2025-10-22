@@ -49,9 +49,13 @@
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
+    "@types/dom-to-image": "^2.6.7",
+    "@types/react": "^19.1.10",
+    "@types/react-native": "^0.72.8",
     "eslint": "^9.25.0",
     "eslint-config-expo": "~9.2.0",
-    "expo": "^54.0.10"
+    "expo": "^54.0.10",
+    "typescript": "~5.8.3"
   },
   "private": true
 }

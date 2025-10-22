@@ -2,20 +2,19 @@
 console.log('🔍 Verifying ShopEase Backend Configuration...');
 console.log('');
 
-// Check Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCwTawYwGD19WsOzjG2zt8E-KlmhIV6O7s",
-  authDomain: "gelcastore.firebaseapp.com",
-  projectId: "gelcastore",
-  storageBucket: "gelcastore.appspot.com",
-  messagingSenderId: "556257405254",
-  appId: "1:556257405254:web:c19f2dacba14241a251d47",
+apiKey: "AIzaSyD5a3wyNDYee6o1a6vLxMcFYt-Gdw5Kp8Q",
+  authDomain: "shopease-cea52.firebaseapp.com",
+  projectId: "shopease-cea52",
+  storageBucket: "shopease-cea52.firebasestorage.app",
+  messagingSenderId: "122932901549",
+  appId: "1:122932901549:web:18b35f9a73be677584f824"
 };
 
 console.log('✅ Firebase Configuration:');
-console.log('   Project ID: gelcastore (same as Stepwise)');
-console.log('   Auth Domain: gelcastore.firebaseapp.com');
-console.log('   Storage: gelcastore.appspot.com');
+console.log('   Project ID: shopease-cea52 (same as gelstore)');
+console.log('   Auth Domain: shopease-cea52.firebaseapp.com');
+console.log('   Storage: shopease-cea52.firebasestorage.app');
 console.log('');
 
 console.log('✅ Backend Features (same as Stepwise):');
@@ -50,4 +49,3 @@ console.log('   • Same user management');
 console.log('');
 
 console.log('✅ Verification Complete: Backend is identical to Stepwise!');
-

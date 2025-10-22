@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "ShopEase",
+    "name": "shopease",
     "slug": "shopease",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -17,7 +17,7 @@
         "backgroundColor": "#FF6B35"
       },
       "edgeToEdgeEnabled": true,
-      "package": "com.shopease.app"
+      "package": "com.yourname.myapp"
     },
     "web": {
       "bundler": "metro",
@@ -32,7 +32,7 @@
           "image": "./assets/images/splash-icon.png",
           "imageWidth": 200,
           "resizeMode": "contain",
-          "backgroundColor": "#FF6B35"
+          "backgroundColor": "#ffffff"
         }
       ]
     ],

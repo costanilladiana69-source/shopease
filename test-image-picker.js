@@ -17,3 +17,10 @@ console.log('   5. Choose Camera or Gallery');
 console.log('');
 console.log('🟠 All images will be stored locally and displayed in orange-themed UI');
 
+
+
+
+
+
+
+

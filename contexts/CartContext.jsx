@@ -1,22 +1,23 @@
 import {
-    addDoc,
-    collection,
-    deleteDoc,
-    doc,
-    getDocs,
-    onSnapshot,
-    query,
-    serverTimestamp,
-    updateDoc,
-    where,
-    writeBatch
+  addDoc,
+  collection,
+  deleteDoc,
+  doc,
+  getDocs,
+  onSnapshot,
+  query,
+  serverTimestamp,
+  updateDoc,
+  where,
+  writeBatch,
 } from 'firebase/firestore';
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import { db } from '../firebaseConfig.js';
 import { useAuth } from './AuthContext.jsx';
 
 const CartContext = createContext(undefined);
 
+// ✅ Correct custom hook
 export const useCart = () => {
   const context = useContext(CartContext);
   if (context === undefined) {
@@ -25,6 +26,7 @@ export const useCart = () => {
   return context;
 };
 
+// ✅ Correct provider
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -36,18 +38,20 @@ export const CartProvider = ({ children }) => {
       setLoading(false);
       return;
     }
-    
+
     try {
       const cartRef = collection(db, 'cart');
       const q = query(cartRef, where('userId', '==', user.id));
       const querySnapshot = await getDocs(q);
-      
+
       const items = await Promise.all(
         querySnapshot.docs.map(async (cartDoc) => {
           const cartData = cartDoc.data();
-          const productDoc = await getDocs(query(collection(db, 'products'), where('__name__', '==', cartData.productId)));
+          const productDoc = await getDocs(
+            query(collection(db, 'products'), where('__name__', '==', cartData.productId))
+          );
           const product = productDoc.docs[0]?.data();
-          
+
           return {
             id: cartDoc.id,
             ...cartData,
@@ -55,11 +59,11 @@ export const CartProvider = ({ children }) => {
               ...product,
               createdAt: product?.createdAt?.toDate() || new Date(),
               updatedAt: product?.updatedAt?.toDate() || new Date(),
-            }
+            },
           };
         })
       );
-      
+
       setCartItems(items);
     } catch (error) {
       console.error('Error loading cart:', error);
@@ -80,17 +84,19 @@ export const CartProvider = ({ children }) => {
     setLoading(true);
     const cartRef = collection(db, 'cart');
     const q = query(cartRef, where('userId', '==', user.id));
-    
-    const unsubscribe = onSnapshot(q, 
+
+    const unsubscribe = onSnapshot(
+      q,
       async (querySnapshot) => {
         try {
-          console.log('Cart snapshot received:', querySnapshot.docs.length, 'items');
           const items = await Promise.all(
             querySnapshot.docs.map(async (cartDoc) => {
               const cartData = cartDoc.data();
-              const productDoc = await getDocs(query(collection(db, 'products'), where('__name__', '==', cartData.productId)));
+              const productDoc = await getDocs(
+                query(collection(db, 'products'), where('__name__', '==', cartData.productId))
+              );
               const product = productDoc.docs[0]?.data();
-              
+
               return {
                 id: cartDoc.id,
                 ...cartData,
@@ -98,28 +104,20 @@ export const CartProvider = ({ children }) => {
                   ...product,
                   createdAt: product?.createdAt?.toDate() || new Date(),
                   updatedAt: product?.updatedAt?.toDate() || new Date(),
-                }
+                },
               };
             })
           );
 
-          console.log('Cart items updated in real-time:', items.length);
           setCartItems(items);
         } catch (error) {
           console.error('Error processing cart snapshot:', error);
         } finally {
           setLoading(false);
         }
-      }, 
+      },
       (error) => {
         console.error('Error with cart listener:', error);
-        if (error.code === 'permission-denied') {
-          console.log('Cart permission denied - user may not be properly authenticated');
-          // Try to reload user data
-          if (user) {
-            console.log('User exists but cart access denied. User ID:', user.id);
-          }
-        }
         setLoading(false);
       }
     );
@@ -136,16 +134,13 @@ export const CartProvider = ({ children }) => {
     }
 
     try {
-      // Check if item already exists in cart
       const existingItem = cartItems.find(
-        item => item.productId === product.id && item.size === size && item.color === color
+        (item) => item.productId === product.id && item.size === size && item.color === color
       );
 
       if (existingItem) {
-        // Update existing item quantity
         await updateQuantity(existingItem.id, existingItem.quantity + quantity);
       } else {
-        // Add new item to cart
         const cartRef = collection(db, 'cart');
         const newItem = {
           userId: user.id,
@@ -159,14 +154,14 @@ export const CartProvider = ({ children }) => {
         };
 
         const docRef = await addDoc(cartRef, newItem);
-        
+
         const cartItem = {
           id: docRef.id,
           ...newItem,
           product,
         };
 
-        setCartItems(prev => [...prev, cartItem]);
+        setCartItems((prev) => [...prev, cartItem]);
       }
     } catch (error) {
       console.error('Error adding to cart:', error);
@@ -177,7 +172,7 @@ export const CartProvider = ({ children }) => {
   const removeFromCart = async (itemId) => {
     try {
       await deleteDoc(doc(db, 'cart', itemId));
-      setCartItems(prev => prev.filter(item => item.id !== itemId));
+      setCartItems((prev) => prev.filter((item) => item.id !== itemId));
     } catch (error) {
       console.error('Error removing from cart:', error);
       throw error;
@@ -192,19 +187,19 @@ export const CartProvider = ({ children }) => {
 
     try {
       const itemRef = doc(db, 'cart', itemId);
-      const item = cartItems.find(item => item.id === itemId);
-      
+      const item = cartItems.find((item) => item.id === itemId);
+
       if (!item) return;
 
-      await updateDoc(itemRef, { 
+      await updateDoc(itemRef, {
         quantity,
         price: item.product.price * quantity,
-        updatedAt: serverTimestamp()
+        updatedAt: serverTimestamp(),
       });
-      
-      setCartItems(prev => 
-        prev.map(item => 
-          item.id === itemId 
+
+      setCartItems((prev) =>
+        prev.map((item) =>
+          item.id === itemId
             ? { ...item, quantity, price: item.product.price * quantity }
             : item
         )
@@ -220,12 +215,12 @@ export const CartProvider = ({ children }) => {
 
     try {
       const batch = writeBatch(db);
-      cartItems.forEach(item => {
+      cartItems.forEach((item) => {
         const itemRef = doc(db, 'cart', item.id);
         batch.delete(itemRef);
       });
       await batch.commit();
-      
+
       setCartItems([]);
     } catch (error) {
       console.error('Error clearing cart:', error);
@@ -253,10 +248,5 @@ export const CartProvider = ({ children }) => {
     refreshCart,
   };
 
-  return (
-    <CartContext.Provider value={value}>
-      {children}
-    </CartContext.Provider>
-  );
+  return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };
-

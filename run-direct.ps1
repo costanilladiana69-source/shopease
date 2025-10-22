@@ -40,3 +40,10 @@ Write-Host ""
 cmd /c "npx expo start --port 8082"
 
 
+
+
+
+
+
+
+

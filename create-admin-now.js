@@ -7,12 +7,12 @@ const { getFirestore, doc, setDoc, serverTimestamp } = require('firebase/firesto
 
 // Your Firebase config - replace with your actual config
 const firebaseConfig = {
-  apiKey: "AIzaSyBvQvQvQvQvQvQvQvQvQvQvQvQvQvQvQvQ",
-  authDomain: "gelcastore.firebaseapp.com",
-  projectId: "gelcastore",
-  storageBucket: "gelcastore.appspot.com",
-  messagingSenderId: "123456789",
-  appId: "1:123456789:web:abcdefghijklmnop"
+ apiKey: "AIzaSyD5a3wyNDYee6o1a6vLxMcFYt-Gdw5Kp8Q",
+  authDomain: "shopease-cea52.firebaseapp.com",
+  projectId: "shopease-cea52",
+  storageBucket: "shopease-cea52.firebasestorage.app",
+  messagingSenderId: "122932901549",
+  appId: "1:122932901549:web:18b35f9a73be677584f824"
 };
 
 const app = initializeApp(firebaseConfig);

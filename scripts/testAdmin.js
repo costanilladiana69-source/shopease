@@ -8,12 +8,12 @@ const { getFirestore, doc, getDoc } = require('firebase/firestore');
 // Your Firebase config (replace with your actual config)
 const firebaseConfig = {
   // Add your Firebase config here
-  apiKey: "your-api-key",
-  authDomain: "your-project.firebaseapp.com",
-  projectId: "your-project-id",
-  storageBucket: "your-project.appspot.com",
-  messagingSenderId: "123456789",
-  appId: "your-app-id"
+   apiKey: "AIzaSyD5a3wyNDYee6o1a6vLxMcFYt-Gdw5Kp8Q",
+  authDomain: "shopease-cea52.firebaseapp.com",
+  projectId: "shopease-cea52",
+  storageBucket: "shopease-cea52.firebasestorage.app",
+  messagingSenderId: "122932901549",
+  appId: "1:122932901549:web:18b35f9a73be677584f824"
 };
 
 const app = initializeApp(firebaseConfig);

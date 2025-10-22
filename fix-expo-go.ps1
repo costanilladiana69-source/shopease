@@ -108,3 +108,4 @@ Write-Host "   4. If QR code doesn't work, try typing the URL manually" -Foregro
 Write-Host ""
 Write-Host "🛑 To stop the server: Press Ctrl+C" -ForegroundColor Red
 
+

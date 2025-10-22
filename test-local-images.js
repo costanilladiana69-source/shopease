@@ -38,3 +38,10 @@ console.log('');
 
 console.log('✅ Local images are now displayed on the home page!');
 
+
+
+
+
+
+
+
